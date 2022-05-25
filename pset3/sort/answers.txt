@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: has the sorted time the square of the reversed times 
+
+sort2 uses: Merge Sort
+
+How do you know?: is the faster one in all tests
+
+sort3 uses: Selection Sort
+
+How do you know?: is the slower one in the sorted tests
