@@ -59,7 +59,4 @@ int main(void)
     //função que imprime a quantidade de moedas necessárias
 
     printf("%i moedas\n", moedas);
-
-    //teste github git push e git commit
-
 }
