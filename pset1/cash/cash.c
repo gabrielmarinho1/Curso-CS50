@@ -60,4 +60,6 @@ int main(void)
 
     printf("%i moedas\n", moedas);
 
+    //teste github
+
 }
