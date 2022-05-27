@@ -60,6 +60,6 @@ int main(void)
 
     printf("%i moedas\n", moedas);
 
-    //teste github
+    //teste github git push e git commit
 
 }
