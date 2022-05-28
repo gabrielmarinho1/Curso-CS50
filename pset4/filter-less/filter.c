@@ -6,29 +6,28 @@
 
 int main(int argc, char *argv[])
 {
-
     // Define allowable filters
-    char *filters = "begr";
+    char *filters = "bgrs";
 
     // Get filter flag and check validity
     char filter = getopt(argc, argv, filters);
     if (filter == '?')
     {
-        fprintf(stderr, "Invalid filter.\n");
+        printf("Invalid filter.\n");
         return 1;
     }
 
     // Ensure only one filter
     if (getopt(argc, argv, filters) != -1)
     {
-        fprintf(stderr, "Only one filter allowed.\n");
+        printf("Only one filter allowed.\n");
         return 2;
     }
 
     // Ensure proper usage
     if (argc != optind + 2)
     {
-        fprintf(stderr, "Usage: filter [flag] infile outfile\n");
+        printf("Usage: ./filter [flag] infile outfile\n");
         return 3;
     }
 
@@ -40,7 +39,7 @@ int main(int argc, char *argv[])
     FILE *inptr = fopen(infile, "r");
     if (inptr == NULL)
     {
-        fprintf(stderr, "Could not open %s.\n", infile);
+        printf("Could not open %s.\n", infile);
         return 4;
     }
 
@@ -49,7 +48,7 @@ int main(int argc, char *argv[])
     if (outptr == NULL)
     {
         fclose(inptr);
-        fprintf(stderr, "Could not create %s.\n", outfile);
+        printf("Could not create %s.\n", outfile);
         return 5;
     }
 
@@ -67,10 +66,11 @@ int main(int argc, char *argv[])
     {
         fclose(outptr);
         fclose(inptr);
-        fprintf(stderr, "Unsupported file format.\n");
+        printf("Unsupported file format.\n");
         return 6;
     }
 
+    // Get image's dimensions
     int height = abs(bi.biHeight);
     int width = bi.biWidth;
 
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
     RGBTRIPLE(*image)[width] = calloc(height, width * sizeof(RGBTRIPLE));
     if (image == NULL)
     {
-        fprintf(stderr, "Not enough memory to store image.\n");
+        printf("Not enough memory to store image.\n");
         fclose(outptr);
         fclose(inptr);
         return 7;
@@ -105,19 +105,19 @@ int main(int argc, char *argv[])
             blur(height, width, image);
             break;
 
-        // Edges
-        case 'e':
-            edges(height, width, image);
-            break;
-
         // Grayscale
         case 'g':
             grayscale(height, width, image);
             break;
 
-        // Reflect
+        // Reflection
         case 'r':
             reflect(height, width, image);
+            break;
+
+        // Sepia
+        case 's':
+            sepia(height, width, image);
             break;
     }
 
@@ -143,11 +143,8 @@ int main(int argc, char *argv[])
     // Free memory for image
     free(image);
 
-    // Close infile
+    // Close files
     fclose(inptr);
-
-    // Close outfile
     fclose(outptr);
-
     return 0;
 }
