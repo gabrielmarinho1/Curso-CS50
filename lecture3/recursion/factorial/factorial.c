@@ -1,8 +1,16 @@
 #include <stdio.h>
 #include <cs50.h>
 
-//factorial function prototype
-int fact(int f);
+//factorial function
+int fact(int n)
+{
+    //base case
+    if (n == 1)
+        return 1;
+    //recursive case
+    else
+        return n * fact(n - 1);
+}
 
 int main(void)
 {
@@ -24,15 +32,4 @@ int main(void)
         printf("%d\n", (fact(i)));
     }
 
-}
-
-//factorial function
-int fact(int n)
-{
-    //base case
-    if (n == 1)
-        return 1;
-    //recursive case
-    else
-        return n * fact(n - 1);
 }
