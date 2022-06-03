@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    //declaration an array of size 50;
+    //declaration an array of size 15;
     int list[15];
 
     //populate array with 15 pseudorandom numbers
@@ -13,8 +13,13 @@ int main(void)
         list[i] = rand()%15;
     }
 
-    //count the amount of integers in the array
-    int elements = sizeof(list) / sizeof(int);
+    //print the unsorted list
+    printf("Original list: ");
+    for (int i = 0; i < 15; i++)
+    {
+        printf("%i ", list[i]);
+    }
+    printf("\n");
 
     //set the counter to a non-zero value
     int counter = -1;
@@ -26,7 +31,7 @@ int main(void)
         counter = 0;
 
         //look at each adjecent pair
-        for (int i = 0, j = 0; i < elements - 1; i++)
+        for (int i = 0, j = 0; i < 15 - 1; i++)
         {
             //if two adjecent elements are not sorted, swap them and count 1 swap
             if (list[i] > list[i + 1])
@@ -42,9 +47,11 @@ int main(void)
         }
     }
 
-    //print out the sorted list
-    for (int i = 0; i < elements; i++)
+    //print the unsorted list
+    printf("Sorted list: ");
+    for (int i = 0; i < 15; i++)
     {
-        printf("%i\n", list[i]);
+        printf("%i ", list[i]);
     }
+    printf("\n");
 }
