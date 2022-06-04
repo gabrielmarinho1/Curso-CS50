@@ -144,7 +144,7 @@ void add_pairs(void)
                 //i ganha e j perde
                 pairs[pair_count].winner = i;
                 pairs[pair_count].loser = j;
-                
+
                 //um par com um vencedor é adicionado
                 pair_count++;
             }
@@ -154,7 +154,7 @@ void add_pairs(void)
                 //j ganha e i perde
                 pairs[pair_count].winner = j;
                 pairs[pair_count].loser = i;
-                
+
                 //um par com um vencedor é adicionado
                 pair_count++;
             }
@@ -166,10 +166,35 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    for (int i = 0; i < pair_count - 1; i++)
+    //set swap count to a non-zero value
+    int count = -1;
+
+    //repeat until none swaps are made
+    while (count != 0)
     {
-           
+        //reset swap count to 0
+        count = 0;
+
+        //look at each pair in the list
+        for (int i = 0, s = 0; i < pair_count; i++)
+        {
+            //compare it to every other pair
+            for (int j = i + 1; j < pair_count; j++)
+            {
+                //if the jth pair have a stronger victory than the ith pair, swap them
+                if (preferences[pairs[j].winner][pairs[j].loser] > preferences[pairs[i].winner][pairs[i].loser])
+                {
+                    pair temp = pairs[i];
+                    pairs[i] = pairs[j];
+                    pairs[j] = temp;
+
+                    //count 1 swap
+                    count++;
+                }
+            }
+        }
     }
+
     return;
 }
 
