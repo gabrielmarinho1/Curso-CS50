@@ -23,7 +23,7 @@ int main(void)
     //set the swap count to a non-zero value
     int count = -1;
 
-    //repeat until none swaps are done
+    //repeat until none swap is made
     while (count != 0)
     {
         //reset swap count so 0
