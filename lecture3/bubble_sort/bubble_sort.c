@@ -24,7 +24,7 @@ int main(void)
     //set the counter to a non-zero value
     int counter = -1;
 
-    //repeat until none swaps are done
+    //repeat until none swap is made
     while (counter != 0)
     {
         //reset swap counter to 0
