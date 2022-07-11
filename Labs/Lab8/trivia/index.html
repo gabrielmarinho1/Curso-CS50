@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+            // the script will run when the document is entirely loaded
+            document.addEventListener('DOMContentLoaded', function() {
+
+                //get the id of the button with the correct answer
+                let correct = document.querySelector('#correct');
+                //when it is clicked
+                correct.addEventListener('click', function(){
+                    //change it's background color to green
+                    correct.style.backgroundColor = 'green';
+                    //put "Correct!" on the 'feedback1' empty paragraph
+                    document.querySelector('#feedback1').innerHTML = 'Correct!';
+                });
+                //get an array of the ids of the buttons with the incorrect answers
+                let incorrects = document.querySelectorAll('#incorrect');
+
+                //for each incorrect button
+                for (let i = 0; i < incorrects.length; i++) {
+                    //when it is clicked
+                    incorrects[i].addEventListener('click', function() {
+                        //change it's background color to red
+                        incorrects[i].style.backgroundColor = 'red';
+                        //put "Incorrect!" on the 'feedback1' empty paragraph
+                        document.querySelector('#feedback1').innerHTML = 'Incorrect!';
+                    })
+                }
+
+                //when the Check Answer button on Part 2 is clicked
+                document.querySelector('#check').addEventListener('click', function(){
+
+                    //get the input id
+                    let input = document.querySelector('input');
+                    //if the input value is equal to the correct answer
+                    if (input.value == 'Cameron Diaz') {
+                        //change it's background color to green
+                        input.style.backgroundColor = 'green';
+                        //put "Correct!" on the 'feedback2' empty paragraph
+                        document.querySelector('#feedback2').innerHTML = 'Correct!';
+                    }
+                    else {
+                        //change it's background color to red
+                        input.style.backgroundColor = 'red';
+                        //put "Incorrect!" on the 'feedback2' empty paragraph
+                        document.querySelector('#feedback2').innerHTML = 'Incorrect!';
+                    }
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <h3>Which artist famously cut off his own ear?</h3>
+
+                <button id="correct">Vincent Van Gogh</button>
+                <button id="incorrect">Claude Monet</button>
+                <button id="incorrect">Salvador Dali</button>
+                <button id="incorrect">Pablo Picasso</button>
+
+                <p id="feedback1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <h3>Who voices Princess Fiona in the Shrek films?</h3>
+
+                <input type="text">
+                <input id="check" type="submit" autocomplete="off" value="Check Answer">
+
+                <p id="feedback2"></p>
+            </div>
+        </div>
+    </body>
+</html>
