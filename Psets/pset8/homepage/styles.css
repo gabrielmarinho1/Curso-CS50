@@ -1,0 +1,55 @@
+#carouselExampleCaptions {
+    margin: auto;
+    min-width: 70%;
+    padding: 10px;
+}
+.bg-cover {
+    display: block !important;
+    background-size: cover !important;
+    background-position: center !important;
+    min-height: 70vh;
+}
+.page-holder {
+    min-height: 100vh;
+}
+
+.mb-0 {
+    width: 50% !important;
+}
+
+#intro {
+    text-align: left;
+    float: left;
+    max-width: 300px;
+}
+.subheading {
+    padding: 30px;
+    text-align: center;
+    color: white;
+}
+
+.card {
+    margin: 40px;
+    float: left;
+}
+
+.header {
+    padding: 150px;
+    position: relative;
+    background-position: center center !important;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.description {
+    padding: 40px;
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    background-color: #242424;
+}
